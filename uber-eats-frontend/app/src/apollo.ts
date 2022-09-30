@@ -9,7 +9,7 @@ console.log("default value of isLoggedInVar is:", isLoggedInVar());
 console.log("default value of authTokenVar is:", authTokenVar());
 
 export const client = new ApolloClient({
-  uri: "http://backend:4001/graphql",
+  uri: "http://localhost:10041/graphql",
   cache: new InMemoryCache({
     typePolicies: {
       Query: {

@@ -3,8 +3,8 @@ import React from "react";
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
 import { Link, useHistory } from "react-router-dom";
-import { Button } from "@components/button";
-import { FormError } from "@components/form-error";
+import { Button } from "../components/button";
+import { FormError } from "../components/form-error";
 import nuberLogo from "../images/logo.svg";
 import {
   createAccountMutation,

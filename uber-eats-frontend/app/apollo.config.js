@@ -3,8 +3,8 @@ module.exports = {
       includes: ["./src/**/*.tsx"],
       tagName: "gql",
       service: {
-        name: "uber-eats-backend",
-        url: "http://backend:4000/graphql"
+        name: "backend",
+        url: "http://backend_nginx:10041/graphql"
       }
     }
   };
