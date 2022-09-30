@@ -13,7 +13,7 @@ cd uber-eats-clone/uber-eats-backend && docker-compose up -d --build
 4. If you can access http://localhost:10041/graphql/, please build to frontend  
 (Please wait to finish to building container maybe 3~4 minutes).  
 ```
-cd ../uber-eats-clone/uber-eats-frontend && docker-compose up -d --build
+cd ../uber-eats-frontend && docker-compose up -d --build
 ```
 
 5. Access to page from Here  
