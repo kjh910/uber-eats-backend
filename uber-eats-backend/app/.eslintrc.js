@@ -2,6 +2,7 @@ module.exports = {
   parser: '@typescript-eslint/parser',
   parserOptions: {
     project: 'tsconfig.json',
+    tsconfigRootDir: __dirname,
     sourceType: 'module',
   },
   plugins: ['@typescript-eslint/eslint-plugin'],
@@ -16,6 +17,19 @@ module.exports = {
   },
   ignorePatterns: ['.eslintrc.js'],
   rules: {
+    'semi': [2, 'always'],
+    'react/react-in-jsx-scope': 'off',
+    'react/prop-types': 'off',
+    'camelcase': 'off',
+    'indent': [
+        'off',
+        6
+    ],
+    'linebreak-style': [
+        'error',
+        'unix'
+    ],
+    'quotes': [2, 'single', { 'avoidEscape': true }],
     '@typescript-eslint/interface-name-prefix': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',

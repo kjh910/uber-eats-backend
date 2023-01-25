@@ -1,10 +1,8 @@
-FROM node:18.10.0
+FROM node:19.4.0
 
 WORKDIR /app
 
 ADD ./ /app/
-
-RUN chmod -R 777 /app/
 
 RUN chmod 777 /app/runserver.sh
 

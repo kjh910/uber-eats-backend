@@ -1,57 +1,32 @@
 {
-  "name": "nuber-eats-frontend",
+  "name": "app",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {
-    "@apollo/client": "^3.3.7",
-    "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^11.1.0",
-    "@testing-library/user-event": "^12.1.10",
-    "@types/jest": "^26.0.15",
-    "@types/node": "^12.0.0",
-    "@types/react": "^16.14.2",
-    "@types/react-dom": "^16.9.8",
-    "@types/react-helmet": "^6.1.0",
-    "@types/react-router-dom": "^5.1.7",
-    "apollo": "^2.32.1",
-    "autoprefixer": "^10.2.3",
-    "graphql": "^15.4.0",
-    "postcss": "^8.2.4",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "react-helmet": "^6.1.0",
-    "react-helmet-async": "^1.0.7",
-    "react-hook-form": "^6.14.2",
-    "react-router-dom": "^5.2.0",
-    "react-scripts": "4.0.1",
-    "tailwindcss": "^2.0.2",
-    "typescript": "^4.1.2",
-    "web-vitals": "^0.2.4"
-  },
   "scripts": {
-    "tailwind:build": "tailwind build ./src/styles/tailwind.css -o ./src/styles/styles.css",
-    "start": "npm run apollo:codegen & npm run tailwind:build & PORT=5001 react-scripts start",
-    "apollo:codegen": " rimraf src/__generated__ && apollo client:codegen src/__generated__ --target=typescript --outputFlat",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "dev": "PORT=5001 next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "dependencies": {
+    "@next/font": "13.1.5",
+    "@types/node": "18.11.18",
+    "@types/react": "18.0.27",
+    "@types/react-dom": "18.0.10",
+    "next": "13.1.5",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "typescript": "4.9.4",
+    "@typescript-eslint/eslint-plugin": "^5.48.2",
+    "@typescript-eslint/parser": "^5.48.2",
+    "eslint": "8.32.0",
+    "eslint-config-next": "^13.1.5",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^6.1.1",
+    "eslint-plugin-react": "^7.32.1",
+    "prettier": "^2.8.3"
   }
 }
