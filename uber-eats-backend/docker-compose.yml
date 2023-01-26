@@ -6,7 +6,8 @@ services:
         context: ./app
       container_name: uber_eats_backend
       volumes:
-        - ./app:/app
+        - /app/node_modules
+        - ./app:/app/
       environment:
         TZ: 'Asia/Tokyo'
       ports:
@@ -50,7 +51,7 @@ services:
       environment:
         POSTGRES_USER: uber_eats
         POSTGRES_PASSWORD: uber_eats
-        POSTGRES_DB: nuber_eats
+        POSTGRES_DB: uber_eats
         PGDATA: /var/lib/postgresql/data/pgdata
       restart: always
   

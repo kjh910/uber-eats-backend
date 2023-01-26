@@ -23,7 +23,7 @@ module.exports = {
     'camelcase': 'off',
     'indent': [
         'off',
-        6
+        4
     ],
     'linebreak-style': [
         'error',

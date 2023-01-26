@@ -1,6 +1,11 @@
 FROM node:19.4.0
 
 WORKDIR /app
+COPY package.json ./
+COPY package-lock.json ./
+RUN npm install
+
+ADD ./ ./node_modules/
 
 ADD ./ /app/
 
