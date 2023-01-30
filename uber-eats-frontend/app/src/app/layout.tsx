@@ -4,13 +4,14 @@ import { ChakraProvider , extendTheme } from '@chakra-ui/react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import React from 'react';
 import { RecoilRoot } from 'recoil';
+import { BeforeLoginHeader } from './components/organisms/before-login-header/before-login-header';
 
 
 export const theme = extendTheme({
    styles: {
       global: {
          body: {
-            backgroundColor: '#1e2021',
+            backgroundColor: '#181a1b',
          },
          html: {
             height: '100%'
@@ -37,6 +38,7 @@ export default function RootLayout({
             <RecoilRoot>
                <QueryClientProvider client={client}>
                   <ChakraProvider theme={theme}>
+                     <BeforeLoginHeader />
                      {children}
                   </ChakraProvider>
                </QueryClientProvider>
