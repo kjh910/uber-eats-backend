@@ -2,7 +2,7 @@
 
 import { Box, Flex, Stack, Text, useDisclosure } from '@chakra-ui/react';
 import { SignInButton } from '../../atoms/buttons/sign-in-button/sign-in-button';
-import { SignInModal } from '../sign-in-collapse/sign-in-modal';
+import { SignInModal } from '../sign-in/sign-in-modal';
 
 export const BeforeLoginHeader = () => {
    const { isOpen: isOpenSignIn, onClose: onCloseSignIn, onOpen: onOpenSignIn } = useDisclosure();
@@ -40,9 +40,6 @@ export const BeforeLoginHeader = () => {
                   </Stack>
                </Flex>
             </Flex>
-         </Box>
-         <Box>
-            <SignInModal isOpen={isOpenSignIn} onClose={onCloseSignIn} />
          </Box>
       </>
    );
