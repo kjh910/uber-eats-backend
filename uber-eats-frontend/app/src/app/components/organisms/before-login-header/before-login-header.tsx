@@ -4,7 +4,7 @@ import { Box, Flex, Stack, Text, useDisclosure } from '@chakra-ui/react';
 import { SignInButton } from '../../atoms/buttons/sign-in-button/sign-in-button';
 
 export const BeforeLoginHeader = () => {
-   const { isOpen: isOpenSignIn, onClose: onCloseSignIn, onOpen: onOpenSignIn } = useDisclosure();
+   const { onOpen: onOpenSignIn } = useDisclosure();
    // const { isOpen: isOpenSignUp, onClose: onCloseSignUp, onOpen: onOpenSignUp } = useDisclosure();
    return (
       <>

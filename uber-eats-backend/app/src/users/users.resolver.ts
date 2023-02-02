@@ -65,7 +65,7 @@ export class UsersResolver {
   @Query((returns) => AuthUserOutput)
   @UseGuards(AuthGuard)
   me(@AuthUser() authUser: User) {
-    console.log(authUser)
+    console.log(authUser);
     return authUser;
   }
 

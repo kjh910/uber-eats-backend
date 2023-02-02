@@ -26,7 +26,10 @@ module.exports = {
          'error',
          'unix'
       ],
-      'quotes': [2, 'single', { 'avoidEscape': true }]
+      'quotes': [2, 'single', { 'avoidEscape': true }],
+      'no-unused-vars':['off'],
+      'no-use-before-define':['off'],
+      'no-undef':['off']
    },
    settings: {
       react: {

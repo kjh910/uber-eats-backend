@@ -1,10 +1,11 @@
 'use client';
 
 import { Box, Input } from '@chakra-ui/react';
+import { ErrorMessage } from '../../error-message/error-message';
 import { IPasswordInputProps } from './props';
 
 export const PasswordInput = (args: IPasswordInputProps) => {
-   const { register } = args;
+   const { register, errors } = args;
    return (
       <Box
          bg={'transparent'}
@@ -12,7 +13,9 @@ export const PasswordInput = (args: IPasswordInputProps) => {
          border={'2px solid transparent'}
       >
          <Input
-            {...register('password')}
+            {...register('password', {
+               required:'パスワードは必須項目です',
+            })}
             type={'password'}
             placeholder="パスワードを入力"
             bg={'#222426'}
@@ -26,6 +29,9 @@ export const PasswordInput = (args: IPasswordInputProps) => {
                   fontSize:'16px'
                }
             }
+         />
+         <ErrorMessage
+            message={errors.password?.message}
          />
       </Box>
    );

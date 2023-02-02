@@ -50,7 +50,7 @@ import { RestaurantsModule } from './restaurants/restaurants.module';
       database: process.env.DB_NAME,
       synchronize: process.env.NODE_ENV !== 'prod',
       logging:
-      process.env.NODE_ENV !== 'prod' && process.env.NODE_ENV !== 'test',
+        process.env.NODE_ENV !== 'prod' && process.env.NODE_ENV !== 'test',
       entities: [User, Verification, Restaurant, Category],
     }),
     GraphQLModule.forRoot<ApolloDriverConfig>({

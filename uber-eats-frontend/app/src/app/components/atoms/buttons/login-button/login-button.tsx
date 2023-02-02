@@ -1,6 +1,6 @@
 'use client';
 
-import { LoginFormType } from '@/app/components/templates/home/types';
+import { LoginFormType } from '@/app/components/templates/login/types';
 import { LoginFormState } from '@/app/recoil/atoms/login-form-state/login-form-state';
 import { Button } from '@chakra-ui/react';
 
@@ -17,6 +17,11 @@ export const LoginButton = () => {
          _hover={
             {
                bgColor:'#262a2b'
+            }
+         }
+         _disabled={
+            {
+               bgColor: 'gray'
             }
          }
       >

@@ -1,31 +1,55 @@
 'use client';
 
-import { LoginFormState } from '@/app/recoil/atoms/login-form-state/login-form-state';
+import { LOGIN_MUTATION } from '@/lib/mutations';
+import { LoginMutation, LoginMutationVariables } from '@/__generated__/graphql';
+
+import { useMutation } from '@apollo/client';
 import { Box, Flex, Text, VStack } from '@chakra-ui/react';
+import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { useRecoilState } from 'recoil';
 import { LoginButton } from '../../atoms/buttons/login-button/login-button';
+import { ErrorMessage } from '../../atoms/error-message/error-message';
 import { EmailInput } from '../../atoms/input/email-input/email-input';
 import { PasswordInput } from '../../atoms/input/password-input/password-input';
 import { SocialLoginGroup } from '../../moleclues/social-login-group/social-login-group';
 import { LoginFormType } from './types';
 
-export default function HomeTemplate() {
-   const { register, handleSubmit } = useForm<LoginFormType>(
+export default function LoginTemplate() {
+   const { register, handleSubmit, formState:{ errors, isValid }, trigger } = useForm<LoginFormType>(
       {
-         mode:'onSubmit',
+         mode:'onChange',
       }
    );
 
-   const [, setLoginFormData] = useRecoilState(LoginFormState);
+   const router = useRouter();
 
-   const onValid = (form:LoginFormType) => {
-      setLoginFormData(
-         {
-            ...form
-         }
-      );
+   const [loginMutation, { data: loginMutationResult, loading }] = useMutation<LoginMutation, LoginMutationVariables>(LOGIN_MUTATION);
+
+   const onValid = async (form:LoginFormType) => {
+      if(isValid && !loading){
+         loginMutation(
+            {
+               variables:{
+                  loginInput: {
+                     email:form.email,
+                     password:form.password
+                  }
+               }
+            }
+         ).then((value) => {
+            if(value.data?.login.ok && value.data.login.token) {
+               window.localStorage.setItem('access_token',value.data.login.token);
+               router.push('/home');
+            }
+         });
+      }
    };
+
+   useEffect(() => {
+      trigger();
+   },[]);
+
    return (
       <Flex
          justifyContent={'center'}
@@ -45,15 +69,22 @@ export default function HomeTemplate() {
                   電話番号またはメール アドレスをお知らせください
                </Text>
                <Box h={'8px'} />
+               {loginMutationResult?.login.error && (
+                  <ErrorMessage
+                     message={loginMutationResult.login.error}
+                  />
+               )}
                <form onSubmit={handleSubmit(onValid)}>
                   <EmailInput 
                      register={register}
+                     errors={errors}
                   />
                   <Box h={'8px'} />
                   <PasswordInput
                      register={register}
+                     errors={errors}
                   />
-                  <LoginButton />
+                  <LoginButton/>
                </form>
                <Box h={'16px'} />
                <Flex
@@ -85,7 +116,6 @@ export default function HomeTemplate() {
                <SocialLoginGroup />
                <Box h={'24px'} />
             </Box>
-
          </VStack>
       </Flex>
    );

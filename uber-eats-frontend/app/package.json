@@ -3,12 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "PORT=5001 next dev",
+    "dev": "npm run codegen && PORT=5001 next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "codegen": "rimraf src/__generated__ && npx graphql-codegen --config codegen.ts"
   },
   "dependencies": {
+    "@apollo/client": "^3.7.6",
     "@chakra-ui/react": "^2.4.9",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
@@ -28,12 +30,26 @@
     "eslint-plugin-promise": "^6.1.1",
     "eslint-plugin-react": "^7.32.1",
     "framer-motion": "^8.5.4",
+    "graphql": "^16.5.0",
+    "graphql-request": "^5.1.0",
     "next": "13.1.5",
     "prettier": "^2.8.3",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-hook-form": "^7.43.0",
     "recoil": "^0.7.6",
-    "typescript": "4.9.4"
+    "rimraf": "^4.1.2"
+  },
+  "devDependencies": {
+    "@graphql-codegen/cli": "2.16.5",
+    "@graphql-codegen/client-preset": "1.3.0",
+    "@graphql-codegen/introspection": "2.2.3",
+    "@graphql-codegen/typescript": "^2.8.8",
+    "@graphql-codegen/typescript-graphql-request": "^4.5.8",
+    "@graphql-codegen/typescript-operations": "^2.5.13",
+    "@graphql-codegen/typescript-react-query": "^4.1.0",
+    "@types/graphql": "^14.5.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.9.5"
   }
 }

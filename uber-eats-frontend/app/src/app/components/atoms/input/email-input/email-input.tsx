@@ -1,10 +1,11 @@
 'use client';
 
 import { Box, Input } from '@chakra-ui/react';
+import { ErrorMessage } from '../../error-message/error-message';
 import { IEmailInputProps } from './props';
 
 export const EmailInput = (args:IEmailInputProps) => {
-   const { register } = args;
+   const { register, errors } = args;
    return (
       <Box
          bg={'transparent'}
@@ -12,7 +13,13 @@ export const EmailInput = (args:IEmailInputProps) => {
          border={'2px solid transparent'}
       >
          <Input
-            {...register('email')}
+            {...register('email', {
+               required:'メールアドレスは必須項目です',
+               pattern: {
+                  value: /^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+/,
+                  message: '正しいメールアドレス形式を入力してください'
+               }
+            })}
             type={'email'}
             placeholder="電話番号またはメールアドレスを入力"
             bg={'#222426'}
@@ -26,6 +33,9 @@ export const EmailInput = (args:IEmailInputProps) => {
                   fontSize:'16px'
                }
             }
+         />
+         <ErrorMessage 
+            message={errors.email?.message}
          />
       </Box>
    );

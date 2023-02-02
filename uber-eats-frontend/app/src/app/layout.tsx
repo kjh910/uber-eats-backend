@@ -1,7 +1,9 @@
 'use client';
 
+import { ApolloProvider } from '@apollo/client';
 import { ChakraProvider , extendTheme } from '@chakra-ui/react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import client from 'apollo-client';
 import React from 'react';
 import { RecoilRoot } from 'recoil';
 import { BeforeLoginHeader } from './components/organisms/before-login-header/before-login-header';
@@ -20,7 +22,8 @@ export const theme = extendTheme({
    }
 });
 
-const client = new QueryClient();
+const queryClient = new QueryClient();
+const apolloClient = client;
 
 export default function RootLayout({
    children,
@@ -36,12 +39,14 @@ export default function RootLayout({
          <head />
          <body>
             <RecoilRoot>
-               <QueryClientProvider client={client}>
-                  <ChakraProvider theme={theme}>
-                     <BeforeLoginHeader />
-                     {children}
-                  </ChakraProvider>
-               </QueryClientProvider>
+               <ApolloProvider client={apolloClient}>
+                  <QueryClientProvider client={queryClient}>
+                     <ChakraProvider theme={theme}>
+                        <BeforeLoginHeader />
+                        {children}
+                     </ChakraProvider>
+                  </QueryClientProvider>
+               </ApolloProvider>
             </RecoilRoot>
          </body>
       </html>

@@ -1,4 +1,4 @@
-import { LoginFormType } from '@/app/components/templates/home/types';
+import { LoginFormType } from '@/app/components/templates/login/types';
 import { atom } from 'recoil';
 
 export const LoginFormState = atom<LoginFormType>({
